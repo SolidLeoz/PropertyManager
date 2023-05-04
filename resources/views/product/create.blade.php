@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form method="POST" action="{{route('storeProduct')}}">
+              {{-- enctype e per specificare il file nel form --}}
+                <form method="POST" action="{{route('storeProduct')}}" enctype="multipart/form-data">
 
                     @csrf 
                     
@@ -19,10 +20,16 @@
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
                     <div class="mb-3">
-                        <label for="formFile" name="file" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="formFile">
+                      <label for="phone" class="form-label">Inserisci il tuo numero telefonico</label>
+                      <input type="tel" id="phone" name="phone">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="mb-3">
+                      <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                      <input class="form-control" type="file" id="formFileMultiple" name="imgProduct" multiple>
+                      {{-- TODO: attualmente accetta ogni tipo di file --}}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Inserisci Richiesta</button>
                   </form>
             </div>
         </div>

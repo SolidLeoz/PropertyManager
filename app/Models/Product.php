@@ -14,7 +14,8 @@ class Product extends Model
         'title',
         'description',
         'check',
-        'file'
+        'phone',
+        'imgProduct'
 
     ];
 }
