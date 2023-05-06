@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,7 @@ class ProductController extends Controller
     }
 //collegata ad una rotta post non restituisce nessuna vista, chiede di retur l'uri e non la rotta.
 //è inserito il codice route() perchè non possiamo richiamare blade (ci aiuta a scrivere php nella pagina html)
-    public function store(Request $request) {
+    public function store(ProductRequest $request) {
         // dd per la verifica dei dati che vengono passati
         // dd($request->all());
 
