@@ -9,18 +9,37 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('indexProduct')}}">Index Richieste</a>
           </li>
+          @auth
           <li class="nav-item">
             <a class="nav-link" href="{{route('createProduct')}}">Inserisci Richiesta</a>
           </li>
+          @endauth
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Autenticazione
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              @guest
+              <li class="nav-item">
+                <a class="dropdown-item" href="{{route('login')}}">Accedi</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="{{route('register')}}">Registrati</a>
+              </li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              @else
+              <li class="nav-item">
+                <form id="form-logout" action="{{route('logout')}}" method="POST">@csrf</form>
+                <a class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();" href="{{route('homePage')}}">Logout</a>
+              </li>
+              @endguest
+              <li>
+                @auth
+                Ciao, {{Auth::user()->name}}
+                @else
+                Ciao, Accedi
+                @endauth
+              </li>
             </ul>
           </li>
           <li class="nav-item">
